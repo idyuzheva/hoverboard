@@ -159,11 +159,11 @@
     }
   },
   "galleryBlock": {
-    "title": "#dfspb18 highlights",
+    "title": "#wtmspb highlights",
     "description": "This year's festival built lots of excitement. Check out photos from featured talks, hands-on learning sessions, and after-hours fun.",
     "callToAction": {
       "label": "See all photos",
-      "link": "https://vk.com/album-145308891_243718047"
+      "link": "https://photos.app.goo.gl/8HVDFnrz4pRFiZXQA"
     }
   },
   "mapBlock": {
@@ -216,32 +216,14 @@
     }
   },
   "aboutOrganizerBlock": {
-    "image": "/images/team.jpg",
+    "image": "https://habrastorage.org/webt/2w/6-/tr/2w6-trbtqxdhp42exnqabfptbz8.jpeg",
     "blocks": [
       {
-        "title": "Organizer",
-        "description": "<a href='https://vk.com/gdgspbru' target='_blank'>GDG SPb</a> with support of 10 GDGs from all around Russia is proud organizer of DevFest Russia",
+        "title": "Venue",
+        "description": "International Women’s Day 2020 in St. Petersburg will be held in the JetBrains conference hall . It is 400 sq. m. of a creative and comfortable space for business events with the latest communication and presentation tools, and technologies. JetBrains is located within 15 minutes walking distance from 'Begovaya' metro station.",
         "callToAction": {
           "label": "Open team page",
           "link": "/team"
-        }
-      },
-      {
-        "title": "What is GDG?",
-        "description": "Google Developers Groups (GDGs) are communities of volunteers who create exciting projects and share experiences about Google technologies.",
-        "callToAction": {
-          "label": "Read more",
-          "link": "https://developers.google.com/groups/",
-          "newTab": true
-        }
-      },
-      {
-        "title": "What is DevFest?",
-        "description": "DevFests are community-led developer events hosted by Google Developer Groups around the globe.",
-        "callToAction": {
-          "label": "Read more",
-          "link": "https://devfest.withgoogle.com/",
-          "newTab": true
         }
       }
     ]
