@@ -2,7 +2,6 @@ importScripts('node_modules/firebase/firebase-app.js');
 importScripts('node_modules/firebase/firebase-messaging.js');
 
 firebase.initializeApp({
-  projectId: '{$ firebase.projectId $}',
   messagingSenderId: '{$ firebase.messagingSenderId $}',
 });
 const messaging = firebase.messaging();

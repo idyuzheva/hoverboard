@@ -133,11 +133,9 @@ const ticketsActions = {
 const _getPartnerItems = (groupId) => firebase.firestore()
     .collection('partners').doc(groupId).collection('items')
     .get()
-    .then((snaps) => {
-      return snaps.docs
-          .map((snap) => Object.assign({}, snap.data(), { id: snap.id }))
-          .sort((a, b) => a.order - b.order);
-    });
+    .then((snaps) => snaps.docs
+        .map((snap) => Object.assign({}, snap.data(), { id: snap.id }))
+    );
 
 const partnersActions = {
   addPartner: (data) => (dispatch) => {
@@ -198,86 +196,6 @@ const partnersActions = {
         .catch((error) => {
           dispatch({
             type: FETCH_PARTNERS_FAILURE,
-            payload: { error },
-          });
-        });
-  },
-};
-
-const feedbackActions = {
-  addComment: (data) => (dispatch) => {
-    dispatch({
-      type: SEND_FEEDBACK,
-      payload: data,
-    });
-
-    firebase.firestore().collection(`${data.collection}/${data.dbItem}/feedback`)
-        .doc(data.userId)
-        .set({
-          contentRating: data.contentRating,
-          styleRating: data.styleRating,
-          comment: data.comment,
-        })
-        .then(() => {
-          dispatch({
-            type: SEND_FEEDBACK_SUCCESS,
-            payload: data,
-          });
-        })
-        .catch((error) => {
-          dispatch({
-            type: SEND_FEEDBACK_FAILURE,
-            payload: { error },
-          });
-        });
-  },
-  checkPreviousFeedback: (data) => (dispatch) => {
-    dispatch({
-      type: FETCH_PREVIOUS_FEEDBACK,
-      payload: data,
-    });
-
-    firebase.firestore().collection(`${data.collection}/${data.dbItem}/feedback`)
-        .doc(data.userId)
-        .get()
-        .then((snapshot) => {
-          dispatch({
-            type: FETCH_PREVIOUS_FEEDBACK_SUCCESS,
-            payload: {
-              collection: data.collection,
-              dbItem: data.dbItem,
-              previousFeedback: snapshot.data(),
-            },
-          });
-        })
-        .catch((error) => {
-          dispatch({
-            type: FETCH_PREVIOUS_FEEDBACK_FAILURE,
-            payload: { error },
-          });
-        });
-  },
-  deleteFeedback: (data) => (dispatch) => {
-    dispatch({
-      type: DELETE_FEEDBACK,
-      payload: data,
-    });
-
-    firebase.firestore().collection(`${data.collection}/${data.dbItem}/feedback`)
-        .doc(data.userId)
-        .delete()
-        .then(() => {
-          dispatch({
-            type: DELETE_FEEDBACK_SUCCESS,
-            payload: {
-              collection: data.collection,
-              dbItem: data.dbItem,
-            },
-          });
-        })
-        .catch((error) => {
-          dispatch({
-            type: DELETE_FEEDBACK_FAILURE,
             payload: { error },
           });
         });
@@ -459,7 +377,7 @@ const sessionsActions = {
             dispatch({
               type: SET_FILTERS,
               payload: {
-                tags: [...tagFilters].sort(),
+                tags: [...tagFilters],
                 complexity: [...complexityFilters],
               },
             });
@@ -887,8 +805,6 @@ const helperActions = {
       type: SIGN_IN,
       user: userToStore,
     });
-
-    if (!userToStore.signedIn) store.dispatch({ type: WIPE_PREVIOUS_FEEDBACK });
   },
 
   getFederatedProvider: (provider) => {
