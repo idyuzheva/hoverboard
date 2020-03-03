@@ -62,7 +62,7 @@
         padding-bottom: 40px;
       }
 
-      .bookmark-session, .feedback-action {
+      .bookmark-session {
         color: var(--secondary-text-color);
       }
 
@@ -70,7 +70,7 @@
         color: var(--default-primary-color);
       }
 
-      .bookmark-session:hover, .feedback-action:hover {
+      .bookmark-session:hover {
         color: var(--default-primary-color);
       }
 
@@ -163,20 +163,11 @@
         <div class="session-meta">
           <div hidden$="[[!session.complexity]]">[[session.complexity]]</div>
         </div>
-        <div class="session-actions">
-          <iron-icon
-            class="feedback-action"
-            hidden="[[!_acceptingFeedback()]]"
-            icon="hoverboard:insert-comment"
-            on-tap="_toggleFeedback"
-          ></iron-icon>
-          <iron-icon
-            class="bookmark-session"
-            hidden="[[_acceptingFeedback()]]"
-            icon="hoverboard:[[_getFeaturedSessionIcon(featuredSessions, session.id)]]"
-            on-tap="_toggleFeaturedSession"
-          ></iron-icon>
-        </div>
+        <iron-icon
+          class="bookmark-session"
+          icon="hoverboard:[[_getFeaturedSessionIcon(featuredSessions, session.id)]]"
+          on-tap="_toggleFeaturedSession"
+        ></iron-icon>
       </div>
 
       <div class="session-footer">
@@ -206,7 +197,7 @@
 
               <div class="speaker-details" flex>
                 <div class="speaker-name">[[speaker.name]]</div>
-                <div class="speaker-title">[[_join(speaker.company, speaker.country)]]</div>
+                <div class="speaker-title">[[speaker.company]] / [[speaker.country]]</div>
               </div>
             </div>
           </template>
@@ -292,29 +283,6 @@
         });
 
         this.dispatch(sessionsActions.setUserFeaturedSessions(this.user.uid, sessions));
-      }
-
-      _toggleFeedback(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        dialogsActions.openDialog(DIALOGS.FEEDBACK, this.session);
-      }
-
-      _acceptingFeedback() {
-        const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
-        const ONE_MINUTE_MS = 60 * 1000;
-        const now = new Date();
-        const convertedTimezoneDate = new Date(
-            new Date(`${this.session.day} ${this.session.startTime}`).getTime() +
-          (parseInt('{$ timezoneOffset $}') - now.getTimezoneOffset()) * ONE_MINUTE_MS
-        );
-
-        const diff = now - convertedTimezoneDate;
-        return diff > 0 && diff < ONE_WEEK_MS;
-      }
-
-      _join(company, country) {
-        return [company, country].filter(Boolean).join(' / ');
       }
     }
 
