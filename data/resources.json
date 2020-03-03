@@ -104,20 +104,15 @@
     "title": "What you need to know, before you ask.",
     "callToAction": {
       "featuredSessions": {
-        "description": "GDG DevFest SPb brings together the world class experts in Android, Web and Cloud technologies to Saint-Petersburg for 1 day of sessions, workshops and showcases.",
-        "label": "Explore featured session",
-        "link": "https://www.youtube.com/playlist?list=PL-E8ovIUgWKKTqtFjMf3M46tMKNVQ5IdM"
-      },
-      "howItWas": {
-        "description": "Described by many as 'Google I/O of SPb', our team creates DevFest to be the best place for experience sharing in a phenomenal atmosphere.",
-        "label": "See how it was in 2018",
-        "youtubeId": "VEgjlSuAHYs"
+        "description": "Women Techmakers Saint-Petersburg is hosting a global event series to celebrate the 2020 International Women’s Day. This will be a day-long conference, geared towards increasing visibility, community and resources for women in technology. The event will feature tech talks and ones on soft skills as well, hands on workshops, networking opportunities and more. And in true Google fashion, there will be plenty of food and excitement!",
+        "label": "Explore Google Women TechMakers program",
+        "link": "https://www.womentechmakers.com/"
       }
     },
     "statisticsBlock": {
       "attendees": {
         "label": "Attendees",
-        "number": "500+"
+        "number": "100+"
       },
       "days": {
         "label": "Days",
@@ -125,7 +120,7 @@
       },
       "sessions": {
         "label": "Sessions",
-        "number": "12"
+        "number": "8"
       },
       "tracks": {
         "label": "Tracks",
